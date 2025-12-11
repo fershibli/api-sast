@@ -26,7 +26,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t my-api:latest .
+        run: docker build -t api-sast:latest .
 
   cd:
     needs: ci
