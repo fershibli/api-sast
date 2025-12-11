@@ -66,3 +66,6 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/api-sast:latest
             ${{ secrets.DOCKER_USERNAME }}/api-sast:${{ steps.tag_version.outputs.new_tag }}
+      - name: Trigger Render Deploy
+        if: success()
+        run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"
