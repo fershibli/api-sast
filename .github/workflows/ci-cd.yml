@@ -40,6 +40,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push to Docker Hub
-        run: |
-          docker tag api-sast:latest ${{ secrets.DOCKER_USERNAME }}/api-sast:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/api-sast:latest
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/api-sast:latest
+            ${{ secrets.DOCKER_USERNAME }}/api-sast:${{ steps.tag_version.outputs.new_tag }}
