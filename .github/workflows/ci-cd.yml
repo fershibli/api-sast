@@ -41,5 +41,5 @@ jobs:
 
       - name: Push to Docker Hub
         run: |
-          docker tag my-api:latest ${{ secrets.DOCKER_USERNAME }}/my-api:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-api:latest
+          docker tag api-sast:latest ${{ secrets.DOCKER_USERNAME }}/api-sast:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/api-sast:latest
